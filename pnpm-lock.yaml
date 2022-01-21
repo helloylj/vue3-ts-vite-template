@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/node': ^17.0.10
   '@typescript-eslint/eslint-plugin': ^4.18.0
   '@typescript-eslint/parser': ^4.18.0
   '@vitejs/plugin-vue': ^2.0.0
@@ -9,6 +10,7 @@ specifiers:
   dayjs: ^1.10.7
   element-plus: ^1.3.0-beta.5
   eslint: ^6.7.2
+  eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^3.3.1
   eslint-plugin-vue: ^7.0.0
   husky: ^7.0.0
@@ -42,12 +44,14 @@ dependencies:
   vue-router: registry.npmmirror.com/vue-router/4.0.12_vue@3.2.27
 
 devDependencies:
+  '@types/node': registry.npmmirror.com/@types/node/17.0.10
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/4.33.0_ff465297bb7b8c732fd450bd1d5e7728
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/4.33.0_eslint@6.8.0+typescript@4.5.4
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.0.1_vite@2.7.13+vue@3.2.27
   autoprefixer: registry.npmmirror.com/autoprefixer/9.8.8
   eslint: registry.npmmirror.com/eslint/6.8.0
-  eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/3.4.1_eslint@6.8.0+prettier@2.5.1
+  eslint-config-prettier: registry.nlark.com/eslint-config-prettier/8.3.0_eslint@6.8.0
+  eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/3.4.1_9ab7673f340d6153b715be6ac85455e0
   eslint-plugin-vue: registry.npmmirror.com/eslint-plugin-vue/7.20.0_eslint@6.8.0
   husky: registry.npmmirror.com/husky/7.0.4
   lint-staged: registry.npmmirror.com/lint-staged/12.2.1
@@ -498,6 +502,18 @@ packages:
     name: escape-string-regexp
     version: 1.0.5
     engines: {node: '>=0.8.0'}
+
+  registry.nlark.com/eslint-config-prettier/8.3.0_eslint@6.8.0:
+    resolution: {integrity: sha1-90cbILb+ipqSVMxoRFQgKIai3Xo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/eslint-config-prettier/download/eslint-config-prettier-8.3.0.tgz}
+    id: registry.nlark.com/eslint-config-prettier/8.3.0
+    name: eslint-config-prettier
+    version: 8.3.0
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: registry.npmmirror.com/eslint/6.8.0
+    dev: true
 
   registry.nlark.com/eslint-utils/1.4.3:
     resolution: {integrity: sha1-dP7HxU0Hdrb2fgJRBAtYBlZOmB8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/eslint-utils/download/eslint-utils-1.4.3.tgz}
@@ -1051,7 +1067,7 @@ packages:
     dev: false
 
   registry.nlark.com/normalize-path/3.0.0:
-    resolution: {integrity: sha1-Dc1p/yOhybEf0JeDFmRKA4ghamU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/normalize-path/download/normalize-path-3.0.0.tgz}
+    resolution: {integrity: sha1-Dc1p/yOhybEf0JeDFmRKA4ghamU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/normalize-path/download/normalize-path-3.0.0.tgz?cache=0&sync_timestamp=1631501916645&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnormalize-path%2Fdownload%2Fnormalize-path-3.0.0.tgz}
     name: normalize-path
     version: 3.0.0
     engines: {node: '>=0.10.0'}
@@ -1876,6 +1892,12 @@ packages:
     resolution: {integrity: sha1-l+3JA36gw4WFMgsolk3eOznkZg0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/json-schema/download/@types/json-schema-7.0.9.tgz}
     name: '@types/json-schema'
     version: 7.0.9
+    dev: true
+
+  registry.npmmirror.com/@types/node/17.0.10:
+    resolution: {integrity: sha512-S/3xB4KzyFxYGCppyDt68yzBU9ysL88lSdIah4D6cptdcltc4NCPCAMc0+PCpg/lLIyC7IPvj2Z52OJWeIUkog==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/download/@types/node-17.0.10.tgz}
+    name: '@types/node'
+    version: 17.0.10
     dev: true
 
   registry.npmmirror.com/@types/parse-json/4.0.0:
@@ -2768,7 +2790,7 @@ packages:
       esbuild-windows-arm64: registry.npmmirror.com/esbuild-windows-arm64/0.13.15
     dev: true
 
-  registry.npmmirror.com/eslint-plugin-prettier/3.4.1_eslint@6.8.0+prettier@2.5.1:
+  registry.npmmirror.com/eslint-plugin-prettier/3.4.1_9ab7673f340d6153b715be6ac85455e0:
     resolution: {integrity: sha1-6d2yAO+289Bf/oOxZlpxavSjh+U=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eslint-plugin-prettier/download/eslint-plugin-prettier-3.4.1.tgz}
     id: registry.npmmirror.com/eslint-plugin-prettier/3.4.1
     name: eslint-plugin-prettier
@@ -2783,6 +2805,7 @@ packages:
         optional: true
     dependencies:
       eslint: registry.npmmirror.com/eslint/6.8.0
+      eslint-config-prettier: registry.nlark.com/eslint-config-prettier/8.3.0_eslint@6.8.0
       prettier: registry.npmmirror.com/prettier/2.5.1
       prettier-linter-helpers: registry.nlark.com/prettier-linter-helpers/1.0.0
     dev: true

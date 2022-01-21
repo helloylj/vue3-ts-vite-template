@@ -3,13 +3,10 @@
 *.woff
 *.ttf
 .vscode
-.idea
+.github
 .husky
-.local
 .eslintrc.js
 node_modules
 dist
 public
-docs
-bin
 Dockerfile
