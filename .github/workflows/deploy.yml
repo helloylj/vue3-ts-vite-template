@@ -1,0 +1,41 @@
+name: deploy
+
+on:
+  push:
+    branches: [master] # master 分支有 push 时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js v14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install
+        run: npm install # 安装依赖
+
+      - name: Build
+        run: npm run build # 打包
+
+      - name: Build the Docker image
+        run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+          # 使用Dockerfile构建镜像
+          docker build -t vue3-ts-vite-template:1.0.0 .
+          docker tag vue3-ts-vite-template:1.0.0 registry.cn-shanghai.aliyuncs.com/yulijuan/yulj_registry1:1.0.0
+          # 推送镜像到镜像仓库
+          docker push registry.cn-shanghai.aliyuncs.com/yulijuan/yulj_registry1:1.0.0
+
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
+      #   with:
+      #     publish_dir: ./dist # 部署打包后的 dist 目录
+      #     github_token: ${{ secrets.VUE3_SECRET }} # secret 名
+      #     user_name: ${{ secrets.MY_USER_NAME }}
+      #     user_email: ${{ secrets.MY_USER_EMAIL }}
