@@ -34,5 +34,5 @@
     // 编译过程中需要引入的库文件的列表。
     "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx", "types/*.d.ts"],
 }
