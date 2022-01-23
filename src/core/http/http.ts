@@ -15,6 +15,7 @@ export class Http {
       (config: AxiosRequestConfig) => {
         const token = 'test token'
         if (token) {
+          config.headers = config.headers || {}
           config.headers['Authorization'] = `Bearer ${token}`
         }
         return config
@@ -52,7 +53,7 @@ export class Http {
 
       this.axiosInstance
         .request(config)
-        .then((response: AxiosResponse) => {
+        .then((response: any) => {
           return resolve(response)
         })
         .catch(error => {
