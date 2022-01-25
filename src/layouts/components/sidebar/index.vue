@@ -5,66 +5,50 @@
       active-text-color="#ffd04b"
       background-color="#545c64"
       text-color="#fff"
-      :default-active="activeMenu"
+      :default-active="activeIndex"
     >
       <template v-for="route in routes" :key="route.path">
-        <el-sub-menu v-if="route.children" :index="route.path">
+        <el-sub-menu v-if="route.children" :index="getFullPath(route)">
           <template #title>
             <i class="iconfont menu-item-icon" :class="route?.meta?.icon"></i>
             <span>{{ route?.meta?.title || '未定义菜单标题' }}</span>
           </template>
-          <el-menu-item
+          <sidebar-item
             v-for="child in route.children"
             :key="child.path"
-            :index="child.path"
-          >
-            <app-link :to="resolvePath(child.path, route.path)">{{
-              child?.meta?.title || '未定义菜单标题'
-            }}</app-link>
-          </el-menu-item>
+            :route="child"
+            :parentRoute="route"
+          />
         </el-sub-menu>
-        <el-menu-item v-else :index="route.path">
-          <i class="iconfont menu-item-icon" :class="route?.meta?.icon"></i>
-          <app-link :to="resolvePath(route.path)">{{
-            route?.meta?.title || '未定义菜单标题'
-          }}</app-link>
-        </el-menu-item>
+        <sidebar-item v-else :route="route" />
       </template>
     </el-menu>
   </el-aside>
 </template>
 
 <script setup lang="ts">
-import AppLink from '@/components/app-link.vue'
-import { useRouter } from 'vue-router'
-import { isUrl } from '@/core/utils/is'
+import SidebarItem from './sidebar-item.vue'
 import { computed } from 'vue'
+import { useRouter, RouteRecordRaw } from 'vue-router'
 const router = useRouter()
-const routes = router.options.routes.filter(route => !route?.meta?.hideMenu)
+const routes = router.options.routes.filter(route => route?.meta?.showMenu)
 
-const resolvePath = (path: string, parentPath?: string): string => {
-  if (isUrl(path)) {
-    return path
-  } else if (parentPath && isUrl(parentPath)) {
-    return parentPath
-  } else {
-    return `${parentPath}/${path}`
-  }
-}
+const getFullPath = (route: RouteRecordRaw, parentRoute?: RouteRecordRaw) =>
+  (parentRoute?.path ? parentRoute.path + '/' : '') + route.path
 
-const activeMenu = computed(() => {
+const activeIndex = computed(() => {
   const currentPath = router.currentRoute.value.path
   let index = ''
-  routes.forEach(route => {
+  routes.forEach((route: RouteRecordRaw) => {
     if (route.children) {
       route.children.forEach(child => {
-        if (resolvePath(child.path, route.path) === currentPath) {
-          index = child.path
+        if (getFullPath(child, route) === currentPath) {
+          index = currentPath
         }
       })
     } else {
-      if (resolvePath(route.path) === currentPath) {
-        index = route.path
+      if (route.path === currentPath) {
+        index = currentPath
       }
     }
   })

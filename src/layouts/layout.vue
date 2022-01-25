@@ -3,9 +3,9 @@
     <app-header></app-header>
     <el-container>
       <app-sidebar></app-sidebar>
-      <el-main>
+      <app-main>
         <router-view />
-      </el-main>
+      </app-main>
     </el-container>
   </el-container>
 </template>
@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import AppHeader from './components/header.vue'
 import AppSidebar from './components/sidebar/index.vue'
+import AppMain from './components/main.vue'
 </script>
 
 <style lang="scss" scoped>

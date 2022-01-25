@@ -1,6 +1,6 @@
 import {
   createRouter,
-  createWebHistory,
+  createWebHashHistory,
   Router,
   RouteRecordRaw
 } from 'vue-router'
@@ -22,14 +22,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '',
     redirect: '/index',
     meta: {
-      hideMenu: true
+      requiresAuth: true
     }
   },
   {
     path: '/index',
     component: Layout,
     meta: {
-      hideMenu: true
+      requiresAuth: true
     },
     children: [
       {
@@ -42,7 +42,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router: Router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

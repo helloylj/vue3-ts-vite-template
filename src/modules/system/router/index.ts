@@ -8,21 +8,34 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '系统管理',
       icon: 'icon-viewgallery',
-      auth: true
+      requiresAuth: true,
+      showMenu: true
     },
     children: [
       {
         path: 'role',
-        component: () => import('../views/role.vue'),
+        name: 'roleList',
+        component: () => import('../views/role/list.vue'),
         meta: {
-          title: '角色管理'
+          title: '角色管理',
+          showMenu: true
+        }
+      },
+      {
+        path: 'role/detail',
+        name: 'roleDetail',
+        component: () => import('../views/role/detail.vue'),
+        meta: {
+          title: '角色详情'
         }
       },
       {
         path: 'permission',
+        name: 'permissionList',
         component: () => import('../views/permission.vue'),
         meta: {
-          title: '权限管理'
+          title: '权限管理',
+          showMenu: true
         }
       }
     ]

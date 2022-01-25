@@ -8,14 +8,17 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '用户管理',
       icon: 'icon-account',
-      auth: true
+      requiresAuth: true,
+      showMenu: true
     },
     children: [
       {
         path: 'list',
+        name: 'userList',
         component: () => import('../views/user-list.vue'),
         meta: {
-          title: '用户列表'
+          title: '用户列表',
+          showMenu: true
         }
       }
     ]

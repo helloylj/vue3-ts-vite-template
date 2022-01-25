@@ -1,5 +1,7 @@
 <template>
-  <div>role</div>
+  <div>
+    <router-link :to="{ name: 'roleDetail' }">navigate to</router-link>
+  </div>
 </template>
 
 <script setup lang="ts"></script>
